@@ -5,6 +5,6 @@ const io = new Server({
   },
 });
 
-io.on("connection", (socket) => {});
+io.on("connection", () => {});
 
 io.listen(3000);
