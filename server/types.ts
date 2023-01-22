@@ -1,24 +1,16 @@
+import { Socket } from "socket.io";
+
 export interface IUser {
-  id: string;
-  name: string;
+  id: Socket["id"];
+  username: string;
 }
 
-// @TODO: Those are examples
-export interface IServerToClientEvents {
-  noArg: () => void;
-  basicEmit: (a: number, b: string, c: Buffer) => void;
-  withAck: (d: string, callback: (e: number) => void) => void;
-}
+export interface IServerToClientEvents {}
 
-export interface IClientToServerEvents {
-  hello: () => void;
-}
+export interface IClientToServerEvents {}
 
-export interface IInterServerEvents {
-  ping: () => void;
-}
+export interface IInterServerEvents {}
 
 export interface ISocketData {
-  name: string;
-  age: number;
+  username: IUser["username"];
 }

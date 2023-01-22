@@ -15,6 +15,7 @@
     "lint": "eslint todo.io --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "pinia": "^2.0.28",
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4",

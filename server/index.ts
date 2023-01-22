@@ -1,15 +1,14 @@
 import { Server } from "socket.io";
+import { users } from "./db";
+import { authMiddleware } from "./middlewares";
+import { remove } from "lodash";
 
 import {
   IClientToServerEvents,
   IInterServerEvents,
   IServerToClientEvents,
   ISocketData,
-  IUser,
 } from "./types";
-
-// This would normally be in some DB
-const users: IUser[] = [];
 
 const io = new Server<
   IClientToServerEvents,
@@ -22,11 +21,24 @@ const io = new Server<
   },
 });
 
+io.use(authMiddleware);
+
 io.on("connection", (socket) => {
   console.log("New connection: ", socket.id);
+  const username = socket.data.username;
+
+  if (username) {
+    users.push({ id: socket.id, username });
+  } else {
+    socket.disconnect();
+  }
+
+  console.log("Current users: ", users);
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
+    remove(users, ["id", socket.id]);
+    console.log("Current users: ", users);
   });
 });
 
