@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { socket } from '@/services/socket'
+import router from "@/router";
 
 let username = ref("");
 let loading = ref(false)
@@ -27,8 +28,8 @@ function handleSubmit() {
 
   socket.on('connect', () => {
     loading.value = false;
-    // @TODO: Redirect to board page
     // @TODO: Save user to store
+    router.replace('/board')
   })
 }
 </script>
