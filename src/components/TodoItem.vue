@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import type { ITodo } from 'types/todo';
+import fontColorContrast from 'font-color-contrast'
 
 const { todo } = defineProps<{
   todo: ITodo,
 }>()
 
-const { id, body, username } = todo;
-
+const { id, body, username, title, color } = todo;
+const textColor = fontColorContrast(color || '', 0.5);
 </script>  
 
 <template>
-  <li class="todo">
+  <li class="todo" :style="{ backgroundColor: color, color: textColor }">
     <div>
-      {{ body }}
+      <h2>{{ title }}</h2>
+      <p v-if="body">
+        {{ body }}
+      </p>
     </div>
     <footer>
       <address rel="author">
@@ -29,7 +33,8 @@ const { id, body, username } = todo;
 <style scoped>
 .todo {
   padding: 0.3rem;
-  background-color: yellow;
+  background-color: #fefefe;
+    color: #000;
   list-style-type: none;
 }
 </style>

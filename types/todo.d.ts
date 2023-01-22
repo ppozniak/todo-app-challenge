@@ -1,5 +1,7 @@
 export interface ITodo {
-  username: string;
-  body: string;
   id: string;
+  username: string;
+  title: string;
+  body?: string;
+  color?: string;
 }

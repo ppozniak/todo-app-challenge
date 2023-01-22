@@ -4,6 +4,7 @@ import { socket } from '@/services/socket';
 import { onUnmounted, onMounted, ref } from 'vue';
 import type { ITodo } from '@/../types/todo';
 import TodoItem from '@/components/TodoItem.vue';
+import NewTodoForm from '@/components/NewTodoForm.vue';
 
 if (!socket.connected) {
   // @TODO: This will be replaced once auth is persisted
@@ -25,13 +26,6 @@ onUnmounted(() => {
   socket.off('todos');
 })
 
-function handleCreate() {
-  socket.emit('new todo', {
-    username: 'hi',
-    body: 'new todo, nice',
-  })
-}
-
 function handleDelete(id: ITodo["id"]) {
   socket.emit('delete todo', id)
 }
@@ -42,9 +36,7 @@ function handleDelete(id: ITodo["id"]) {
   <ul class="todos">
     <TodoItem v-for="todo in todos" :todo="todo" :key="todo.id" @onDeleteClick="handleDelete" />
   </ul>
-  <button @click="handleCreate" type="button">
-    Create new todo
-  </button>
+  <NewTodoForm />
 </template>
 
 <style scoped>
