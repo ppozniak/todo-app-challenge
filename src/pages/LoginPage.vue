@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 import { socket } from '@/services/socket'
 import router from "@/router";
 
@@ -32,6 +32,11 @@ function handleSubmit() {
     router.replace('/board')
   })
 }
+
+onUnmounted(() => {
+  socket.off('connect_error');
+  socket.off('connect');
+})
 </script>
 
 <template>
