@@ -2,6 +2,7 @@ import { Server } from "socket.io";
 import { todos, users } from "./db";
 import { authMiddleware } from "./middlewares";
 import { remove } from "lodash";
+import { v4 as uuid } from "uuid";
 
 import {
   IClientToServerEvents,
@@ -42,7 +43,14 @@ io.on("connection", (socket) => {
 
   socket.on("new todo", (newTodo) => {
     console.log("new todo", newTodo);
-    todos.push(newTodo);
+    todos.push({ ...newTodo, id: uuid() });
+    io.emit("todos", todos);
+  });
+
+  // @TODO: There is a security concern - no auth meaning person could delete others todos
+  socket.on("delete todo", (id) => {
+    console.log("delete", id);
+    remove(todos, ["id", id]);
     io.emit("todos", todos);
   });
 

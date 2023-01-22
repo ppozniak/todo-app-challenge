@@ -31,15 +31,15 @@ function handleCreate() {
   })
 }
 
+function handleDelete(id: ITodo["id"]) {
+  socket.emit('delete todo', id)
+}
+
 </script>
 
-<!-- @TODO: Create new todo -->
-<!-- @TODO: Removing todos -->
-
 <template>
-  <!-- @TODO: Aria label for author? -->
   <ul class="todos">
-    <li v-for="{ body, username } in todos" class="todo">
+    <li v-for="{ body, username, id } in todos" class="todo">
       <div>
         {{ body }}
       </div>
@@ -48,6 +48,10 @@ function handleCreate() {
           {{ username }}
         </address>
       </footer>
+      <!-- @TODO: Show only for author -->
+      <button type="button" @click="handleDelete(id)">
+        Delete that
+      </button>
     </li>
   </ul>
 <button @click="handleCreate" type="button">
