@@ -24,6 +24,13 @@ onUnmounted(() => {
   socket.off('todos');
 })
 
+function handleCreate() {
+  socket.emit('new todo', {
+    username: 'hi',
+    body: 'new todo, nice',
+  })
+}
+
 </script>
 
 <!-- @TODO: Create new todo -->
@@ -43,6 +50,9 @@ onUnmounted(() => {
       </footer>
     </li>
   </ul>
+<button @click="handleCreate" type="button">
+  Create new todo
+</button>
 </template>
 
 <style scoped>

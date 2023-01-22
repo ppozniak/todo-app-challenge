@@ -10,6 +10,7 @@ import {
   ISocketData,
 } from "../types/socket";
 
+// @TODO: Clean up this file
 const io = new Server<
   IClientToServerEvents,
   IServerToClientEvents,
@@ -37,6 +38,12 @@ io.on("connection", (socket) => {
 
   socket.on("request todos", () => {
     socket.emit("todos", todos);
+  });
+
+  socket.on("new todo", (newTodo) => {
+    console.log("new todo", newTodo);
+    todos.push(newTodo);
+    io.emit("todos", todos);
   });
 
   socket.on("disconnect", () => {
