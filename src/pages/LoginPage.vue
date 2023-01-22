@@ -4,8 +4,8 @@ import { socket } from '@/services/socket'
 import router from "@/router";
 import { useUserStore } from "@/stores/user";
 
+// @TODO: Add persistance to user and redirect to board if logged in
 const userStore = useUserStore()
-// @TODO: Redirect to board if already logged in
 
 let username = ref("");
 let loading = ref(false)

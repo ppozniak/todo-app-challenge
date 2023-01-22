@@ -30,7 +30,7 @@ function handleSubmit() {
 
     <div>
       <label for="body">Body</label>
-      <input type="text" id="body" name="body" v-model="formValues.body">
+      <textarea id="body" name="body" v-model="formValues.body"></textarea>
     </div>
 
     <div>

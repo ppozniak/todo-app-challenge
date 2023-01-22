@@ -1,8 +1,10 @@
 import { some } from "lodash";
+import { socketServer } from "socket-server";
 import { users } from "./db";
 
-// @TODO: Type this, disallow `any` in ts config
-export const authMiddleware = (socket: any, next: any) => {
+type Middleware = Parameters<typeof socketServer["use"]>[0];
+
+export const authMiddleware: Middleware = (socket, next) => {
   const username = socket.handshake.auth.username;
   const usernameTaken = some(users, ["username", username]);
 
