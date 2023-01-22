@@ -1,5 +1,5 @@
-import { IUser } from "../types/user";
-import { ITodo } from "../types/todo";
+import { IUser } from "@/types/user";
+import { ITodo } from "@/types/todo";
 
 /*
  This would normally be some database. But it's not.
