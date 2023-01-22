@@ -2,21 +2,22 @@
 import { reactive } from 'vue';
 import { socket } from '@/services/socket';
 import type { ITodo } from 'types/todo';
+import { useUserStore } from '@/stores/user';
 
-// @TODO: Username will be required!
-type TCreateTodo = Omit<ITodo, 'id' | 'username'>
+type TCreateTodoForm = Omit<ITodo, 'id' | 'username'>
 
 // @TODO: Add validation
-const formValues = reactive<TCreateTodo>({
+const formValues = reactive<TCreateTodoForm>({
   title: '',
   body: '',
   color: '#0096ff',
 })
 
+const userStore = useUserStore()
+
 
 function handleSubmit() {
-  // @TODO: Add username too
-  socket.emit('new todo', { ...formValues, username: 'no user :)' })
+  socket.emit('new todo', { ...formValues, username: userStore.username })
 }
 </script>
 
