@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import { users } from "./db";
+import { todos, users } from "./db";
 import { authMiddleware } from "./middlewares";
 import { remove } from "lodash";
 
@@ -8,7 +8,7 @@ import {
   IInterServerEvents,
   IServerToClientEvents,
   ISocketData,
-} from "./types";
+} from "../types/socket";
 
 const io = new Server<
   IClientToServerEvents,
@@ -34,6 +34,10 @@ io.on("connection", (socket) => {
   }
 
   console.log("Current users: ", users);
+
+  socket.on("request todos", () => {
+    socket.emit("todos", todos);
+  });
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
