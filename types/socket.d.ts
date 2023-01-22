@@ -7,6 +7,7 @@ export interface IServerToClientEvents {
 
 export interface IClientToServerEvents {
   "request todos": () => void;
+  "new todo": (newTodo: Todo) => void;
 }
 
 export interface IInterServerEvents {}
