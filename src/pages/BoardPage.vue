@@ -2,7 +2,7 @@
 import router from '@/router';
 import { socket } from '@/services/socket';
 import { onUnmounted, onMounted, ref } from 'vue';
-import type { ITodo } from '../../types/todo';
+import type { ITodo } from '@/../types/todo';
 
 if (!socket.connected) {
   // @TODO: This will be replaced once auth is persisted
