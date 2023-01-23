@@ -1,6 +1,6 @@
 import { remove } from "lodash";
 import { CustomSocket } from "@/types/socket";
-import { handleDeleteTodo, handleNewTodo, handleRequestTodos } from "./todos";
+import { handleRemoveTodo, handleNewTodo, handleRequestTodos } from "./todos";
 import { users } from "../db";
 
 const handleDisconnect = (socket: CustomSocket) => () => {
@@ -16,9 +16,9 @@ export const handleConnection = (socket: CustomSocket) => {
     socket.disconnect();
   }
 
-  socket.on("request todos", handleRequestTodos(socket));
-  socket.on("new todo", handleNewTodo(socket));
-  socket.on("delete todo", handleDeleteTodo(socket));
+  socket.on("todos:request", handleRequestTodos(socket));
+  socket.on("todos:create", handleNewTodo(socket));
+  socket.on("todos:remove", handleRemoveTodo(socket));
 
   socket.on("disconnect", handleDisconnect(socket));
 };

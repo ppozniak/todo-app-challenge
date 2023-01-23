@@ -18,7 +18,7 @@ export const handleNewTodo =
   };
 
 // @TODO: There is a security concern - no auth meaning person could delete others todos
-export const handleDeleteTodo = (socket: CustomSocket) => (id: ITodo["id"]) => {
+export const handleRemoveTodo = (socket: CustomSocket) => (id: ITodo["id"]) => {
   remove(todos, ["id", id]);
   socketServer.emit("todos:list", todos);
 };
