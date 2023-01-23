@@ -8,7 +8,14 @@ body {
 
 @layer components {
   .button {
-    @apply py-2 px-3 rounded-full border-transparent bg-emerald-600 font-bold hover:bg-emerald-700 transition-colors shadow-sm;
+    @apply py-2 px-3 
+    bg-emerald-600 hover:bg-emerald-700 transition-colors
+    shadow-sm rounded-full font-bold 
+    disabled:cursor-not-allowed 
+    disabled:opacity-80 
+    disabled:bg-slate-300
+    disabled:hover:bg-slate-300
+    ;
   }
 
   .input {
@@ -16,6 +23,6 @@ body {
   }
 
   .label {
-    @apply font-bold tracking-wide;
+    @apply tracking-wide;
   }
 }

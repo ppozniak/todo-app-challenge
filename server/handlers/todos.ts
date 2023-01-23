@@ -10,6 +10,7 @@ export const handleRequestTodos = (socket: CustomSocket) => () => {
   socket.emit("todos", todos);
 };
 
+// @TODO: This should trim strings if too long
 export const handleNewTodo =
   (socket: CustomSocket) => (newTodo: Omit<ITodo, "id">) => {
     todos.push({ ...newTodo, id: uuid() });
