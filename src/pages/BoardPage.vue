@@ -17,20 +17,20 @@ if (!socket.connected) {
 
 let todos = ref<ITodo[]>([]);
 
-socket.on("todos", (receivedTodos) => {
+socket.on("todos:list", (receivedTodos) => {
   todos.value = receivedTodos;
 });
 
 onMounted(() => {
-  socket.emit("request todos");
+  socket.emit("todos:request");
 });
 
 onUnmounted(() => {
-  socket.off("todos");
+  socket.off("todos:list");
 });
 
 function handleDelete(id: ITodo["id"]) {
-  socket.emit("delete todo", id);
+  socket.emit("todos:remove", id);
 }
 </script>
 

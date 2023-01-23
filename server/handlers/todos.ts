@@ -7,18 +7,18 @@ import { ITodo } from "@/types/todo";
 import { todos } from "../db";
 
 export const handleRequestTodos = (socket: CustomSocket) => () => {
-  socket.emit("todos", todos);
+  socket.emit("todos:list", todos);
 };
 
 // @TODO: This should trim strings if too long
 export const handleNewTodo =
   (socket: CustomSocket) => (newTodo: Omit<ITodo, "id">) => {
     todos.push({ ...newTodo, id: uuid() });
-    socketServer.emit("todos", todos);
+    socketServer.emit("todos:list", todos);
   };
 
 // @TODO: There is a security concern - no auth meaning person could delete others todos
 export const handleDeleteTodo = (socket: CustomSocket) => (id: ITodo["id"]) => {
   remove(todos, ["id", id]);
-  socketServer.emit("todos", todos);
+  socketServer.emit("todos:list", todos);
 };

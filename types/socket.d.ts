@@ -3,13 +3,13 @@ import type { ITodo } from "./todo";
 import type { Socket } from "socket.io";
 
 export interface IServerToClientEvents {
-  todos: (todos: ITodo[]) => void;
+  "todos:list": (todos: ITodo[]) => void;
 }
 
 export interface IClientToServerEvents {
-  "request todos": () => void;
-  "new todo": (newTodo: Omit<ITodo, "id">) => void;
-  "delete todo": (id: ITodo["id"]) => void;
+  "todos:request": () => void;
+  "todos:create": (newTodo: Omit<ITodo, "id">) => void;
+  "todos:remove": (id: ITodo["id"]) => void;
 }
 
 export interface IInterServerEvents {}

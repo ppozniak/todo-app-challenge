@@ -27,7 +27,7 @@ function resetForm() {
 }
 
 function handleSubmit() {
-  socket.emit("new todo", { ...formValues, username: userStore.username });
+  socket.emit("todos:create", { ...formValues, username: userStore.username });
   resetForm();
 }
 </script>
