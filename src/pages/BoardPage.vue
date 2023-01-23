@@ -18,7 +18,6 @@ if (!socket.connected) {
 let todos = ref<ITodo[]>([]);
 
 socket.on("todos", (receivedTodos) => {
-  console.log(receivedTodos);
   todos.value = receivedTodos;
 });
 
@@ -38,8 +37,8 @@ function handleDelete(id: ITodo["id"]) {
 <template>
   <NewTodoForm />
 
-  <main class="container">
-    <ul class="todos">
+  <main class="container pt-4">
+    <ul v-if="todos.length" class="todos">
       <TodoItem
         v-for="todo in todos"
         :todo="todo"
@@ -47,12 +46,15 @@ function handleDelete(id: ITodo["id"]) {
         @onDeleteClick="handleDelete"
       />
     </ul>
+    <div v-else class="opacity-50 text-center md:mt-[10vh]">
+      <div>Nothing to do? 🤥</div>
+      <div>Better add some todos</div>
+    </div>
   </main>
 </template>
 
 <style scoped>
 .todos {
-  padding: 0;
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

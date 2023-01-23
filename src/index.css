@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body,
-html,
-#app {
-  height: 100%;
+body {
+  @apply bg-slate-700 h-full text-white;
 }
 
 @layer components {

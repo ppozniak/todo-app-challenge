@@ -8,6 +8,9 @@ import fontColorContrast from "font-color-contrast";
 type TCreateTodoForm = Omit<ITodo, "id" | "username">;
 
 // @TODO: Add validation, prevent submit if empty
+// @TODO: Max and min values
+// @TODO: Add ability to toggle this "popup"
+// @TODO: Clear values after sending
 const formValues = reactive<TCreateTodoForm>({
   title: "",
   body: "",
@@ -28,7 +31,7 @@ function handleSubmit() {
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="border-black p-4 rounded-sm mb-4 md:max-w-sm space-y-4 md:border md:fixed md:bottom-6 md:right-6 bg-slate-800 md:shadow-md"
+    class="border-black p-4 md:rounded-md mb-4 md:max-w-sm space-y-4 md:border md:fixed md:bottom-6 md:right-6 bg-slate-800 md:shadow-md md:z-10"
     :style="{ color: textColor, backgroundColor: formValues.color }"
   >
     <h2>Add new todo</h2>

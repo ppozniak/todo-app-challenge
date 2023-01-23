@@ -10,12 +10,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-slate-700 h-full text-white">
-    <header class="py-2 bg-emerald-700 bg-opacity-80 shadow-lg">
-      <div class="container">
-        <h1>TODO.io</h1>
-      </div>
-    </header>
-    <RouterView />
-  </div>
+  <header class="py-2 bg-emerald-700 bg-opacity-80 shadow-lg">
+    <div class="container">
+      <h1>TODO.io</h1>
+    </div>
+  </header>
+  <RouterView />
 </template>

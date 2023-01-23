@@ -12,14 +12,12 @@ export const handleRequestTodos = (socket: CustomSocket) => () => {
 
 export const handleNewTodo =
   (socket: CustomSocket) => (newTodo: Omit<ITodo, "id">) => {
-    console.log("new todo", newTodo);
     todos.push({ ...newTodo, id: uuid() });
     socketServer.emit("todos", todos);
   };
 
 // @TODO: There is a security concern - no auth meaning person could delete others todos
 export const handleDeleteTodo = (socket: CustomSocket) => (id: ITodo["id"]) => {
-  console.log("delete", id);
   remove(todos, ["id", id]);
   socketServer.emit("todos", todos);
 };

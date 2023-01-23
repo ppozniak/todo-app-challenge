@@ -28,7 +28,6 @@ socket.on("connect_error", (error) => {
 });
 
 socket.on("connect", () => {
-  console.log("Should not fire... sus");
   loading.value = false;
   userStore.login(username.value);
   router.replace("/board");
