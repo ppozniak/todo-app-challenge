@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-700 h-full text-white;
+  @apply bg-slate-200 h-full text-black;
 }
 
 @layer components {
   .button {
     @apply py-2 px-3 
     bg-emerald-600 hover:bg-emerald-700 transition-colors
+    text-white
     shadow-sm rounded-full font-bold 
     disabled:cursor-not-allowed 
     disabled:opacity-80 

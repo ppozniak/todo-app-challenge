@@ -15,6 +15,7 @@
     "lint": "eslint todo.io --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.0.13",
     "font-color-contrast": "^11.1.0",
     "lodash": "^4.17.21",
     "pinia": "^2.0.28",

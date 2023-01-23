@@ -28,7 +28,7 @@ const { loading, errorMessage, connect } = useSocketConnect(username);
 
       <strong
         class="px-4 py-1 rounded-sm mt-4 inline-block"
-        :class="{ 'bg-red-700': !!errorMessage }"
+        :class="{ 'bg-red-700 text-white': !!errorMessage }"
         :aria-live="errorMessage ? 'polite' : 'off'"
         v-if="errorMessage || loading"
       >

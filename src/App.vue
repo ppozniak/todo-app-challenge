@@ -10,7 +10,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="py-2 bg-emerald-700 bg-opacity-80 shadow-lg">
+  <header class="py-2 bg-slate-300 bg-opacity-80 shadow-lg font-bold">
     <div class="container">
       <h1>TODO.io</h1>
     </div>
