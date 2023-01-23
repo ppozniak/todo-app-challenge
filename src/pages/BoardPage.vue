@@ -36,15 +36,18 @@ function handleDelete(id: ITodo["id"]) {
 </script>
 
 <template>
-  <ul class="todos">
-    <TodoItem
-      v-for="todo in todos"
-      :todo="todo"
-      :key="todo.id"
-      @onDeleteClick="handleDelete"
-    />
-  </ul>
   <NewTodoForm />
+
+  <main class="container">
+    <ul class="todos">
+      <TodoItem
+        v-for="todo in todos"
+        :todo="todo"
+        :key="todo.id"
+        @onDeleteClick="handleDelete"
+      />
+    </ul>
+  </main>
 </template>
 
 <style scoped>

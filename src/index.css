@@ -7,3 +7,17 @@ html,
 #app {
   height: 100%;
 }
+
+@layer components {
+  .button {
+    @apply py-2 px-3 rounded-full border-transparent bg-emerald-600 font-bold hover:bg-emerald-700 transition-colors shadow-sm;
+  }
+
+  .input {
+    @apply font-bold tracking-wide px-3 py-2 rounded-lg text-black placeholder:font-normal border border-slate-300;
+  }
+
+  .label {
+    @apply font-bold tracking-wide;
+  }
+}

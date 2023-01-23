@@ -12,6 +12,7 @@ module.exports = {
   ],
   rules: {
     "prettier/prettier": "error",
+    "vue/multi-word-component-names": "off",
   },
   parserOptions: {
     ecmaVersion: "latest",

@@ -41,35 +41,31 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="mx-auto mt-8 md:mt-[10vh] max-w-xl">
-    <form @submit.prevent="handleSubmit" class="flex flex-col gap-2">
-      <div class="flex flex-col">
-        <label class="font-bold tracking-wide" for="username">Username</label>
-        <input
-          type="text"
-          v-model="username"
-          id="username"
-          placeholder="Enter your username..."
-          class="p-2 rounded-lg text-black"
-        />
-      </div>
+  <main class="container">
+    <div class="mx-auto mt-8 md:mt-[10vh] max-w-xl">
+      <form @submit.prevent="handleSubmit" class="flex flex-col gap-2">
+        <div class="flex flex-col">
+          <label class="label" for="username">Username</label>
+          <input
+            class="input"
+            type="text"
+            v-model="username"
+            id="username"
+            placeholder="Enter your username..."
+          />
+        </div>
 
-      <button
-        type="submit"
-        class="py-1 px-3 rounded-full border-transparent bg-emerald-600 font-bold hover:bg-emerald-700 transition-colors shadow-sm"
-        :disabled="loading"
+        <button type="submit" class="button">Login</button>
+      </form>
+
+      <strong
+        class="px-4 py-1 rounded-sm mt-4 inline-block"
+        :class="{ 'bg-red-700': !!errorMessage }"
+        :aria-live="errorMessage ? 'polite' : 'off'"
+        v-if="errorMessage || loading"
       >
-        Login
-      </button>
-    </form>
-
-    <strong
-      class="px-4 py-1 rounded-sm mt-4 inline-block"
-      :class="{ 'bg-red-700': !!errorMessage }"
-      :aria-live="errorMessage ? 'polite' : 'off'"
-      v-if="errorMessage || loading"
-    >
-      {{ errorMessage || "Joining... please wait." }}
-    </strong>
-  </div>
+        {{ errorMessage || "Joining... please wait." }}
+      </strong>
+    </div>
+  </main>
 </template>
