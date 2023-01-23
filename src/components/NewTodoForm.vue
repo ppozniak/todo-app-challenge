@@ -1,3 +1,4 @@
+<!-- @TODO: Add ability to toggle this "popup" -->
 <script setup lang="ts">
 import { computed, reactive } from "vue";
 import { socket } from "@/services/socket";
@@ -7,7 +8,7 @@ import fontColorContrast from "font-color-contrast";
 
 type TCreateTodoForm = Omit<ITodo, "id" | "username">;
 
-// @TODO: Add ability to toggle this "popup"
+const userStore = useUserStore();
 const formValues = reactive<TCreateTodoForm>({
   title: "",
   body: "",
@@ -17,8 +18,6 @@ const formValues = reactive<TCreateTodoForm>({
 const textColor = computed(() => {
   return fontColorContrast(formValues.color || "", 0.5);
 });
-
-const userStore = useUserStore();
 
 const isValid = computed(() => !!formValues.title.length);
 
@@ -50,7 +49,7 @@ function handleSubmit() {
           type="text"
           id="title"
           v-model="formValues.title"
-          placeholder="Buy chickems"
+          placeholder="Buy chimkens"
           maxlength="20"
         />
       </div>
