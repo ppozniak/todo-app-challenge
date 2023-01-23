@@ -1,30 +1,29 @@
 <script setup lang="ts">
-import type { ITodo } from 'types/todo';
-import fontColorContrast from 'font-color-contrast'
+import type { ITodo } from "types/todo";
+import fontColorContrast from "font-color-contrast";
 
-const { todo } = defineProps<{
-  todo: ITodo,
-}>()
-
-const { id, body, username, title, color } = todo;
-const textColor = fontColorContrast(color || '', 0.5);
-</script>  
+const props = defineProps<{ todo: ITodo }>();
+const textColor = fontColorContrast(props.todo.color || "", 0.5);
+</script>
 
 <template>
-  <li class="todo" :style="{ backgroundColor: color, color: textColor }">
+  <li
+    class="todo"
+    :style="{ backgroundColor: props.todo.color, color: textColor }"
+  >
     <div>
-      <h2>{{ title }}</h2>
-      <p v-if="body">
-        {{ body }}
+      <h2>{{ props.todo.title }}</h2>
+      <p v-if="props.todo.body">
+        {{ props.todo.body }}
       </p>
     </div>
     <footer>
       <address rel="author">
-        {{ username }}
+        {{ props.todo.username }}
       </address>
     </footer>
     <!-- @TODO: Show delete button only for author -->
-    <button type="button" @click="$emit('onDeleteClick', id)">
+    <button type="button" @click="$emit('onDeleteClick', props.todo.id)">
       Delete that
     </button>
   </li>
@@ -34,7 +33,7 @@ const textColor = fontColorContrast(color || '', 0.5);
 .todo {
   padding: 0.3rem;
   background-color: #fefefe;
-    color: #000;
+  color: #000;
   list-style-type: none;
 }
 </style>
